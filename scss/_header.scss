@@ -1,0 +1,21 @@
+.header {
+    background-color: $grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+
+    &__nav {
+        width: 100vw;
+    }
+
+    &__list {
+        list-style: none;
+    }
+
+    &__item {
+        color: $purple;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+}

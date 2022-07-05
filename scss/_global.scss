@@ -1,0 +1,70 @@
+html {
+    font-size: 100%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+body {
+    color: $lightGrey;
+}
+
+.container {
+    padding: 1rem 2rem;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+}
+
+.btn, button {
+    border: none;
+    outline: none;
+    background-color: $lightGrey;
+    color: $darkGrey;
+    width: calc(100% - 2rem);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.grid-item {
+    background-color: $grey;
+    cursor: pointer;
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 2.25rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    @include breakpoint-down(medium) {
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 1.5rem;
+    }
+
+    @include breakpoint-down(small) {
+        width: 0.5rem;
+        height: 0.5rem;
+        font-size: 0.5rem;
+    }
+
+    i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $white;
+    }
+}
+
+.wall {
+    background-color: $black;
+}
