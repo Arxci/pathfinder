@@ -59,3 +59,36 @@
         }
     }
 }
+
+.dropdown {
+
+    > i {
+        transition: transform 1500 ease-in-out;
+    }
+
+    &.active {
+        border-radius: 5px 5px 0 0;
+
+        > i {
+            transform: rotate(180deg);
+        }
+
+
+    }
+
+    &__items {
+        display: none;
+
+        > button:first-child {
+            border-radius: 0;
+        }
+
+        > button {
+            border-radius: 0 0 5px 5px;
+        }
+
+        &.active {
+            display: inherit;
+        }
+    }
+}

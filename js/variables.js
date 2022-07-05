@@ -28,4 +28,5 @@ const resetNodes = document.querySelector('.reset-nodes');
 const start = document.querySelector('.startBtn');
 const resetWalls = document.querySelector('.reset-walls');
 const createMaze = document.querySelector('.create-maze');
-const dropdwon = document.querySelector('.dropdown');
+const dropdown = document.querySelector('.dropdown');
+const dropdownItems = document.querySelectorAll('.dropdown__items');

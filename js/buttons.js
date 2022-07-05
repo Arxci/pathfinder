@@ -47,6 +47,24 @@ function StartVisualizer(rows, cols) {
     }
 }
 
+function ToggleDropdown () {
+    dropdown.classList.toggle('active');
+
+    for (let item of dropdownItems) {
+        item.classList.toggle('active');
+    }
+
+}
+
+function SelectPathfinder(e) {
+    if (e.target.className === "A*") {
+        selectedPathfinder = 'AStar';
+    } else {
+        selectedPathfinder = 'Dijkstra';
+    }
+    ToggleDropdown();
+}
+
 window.addEventListener('mousedown', (e) => HandleWallPlacement(e));
 start.addEventListener('click', () => StartVisualizer(rows, cols)); 
 resetNodes.addEventListener('click', ResetNodes);
@@ -54,3 +72,7 @@ resetWalls.addEventListener('click', ResetWalls);
 window.addEventListener('mousedown', (e) => HandleStartNodePlacement(e));
 window.addEventListener('mousedown', (e) => HandleTargetNodePlacement(e));
 //createMaze.addEventListener('click', CreateMaze);
+dropdown.addEventListener('click', () => ToggleDropdown());
+for (let item of dropdownItems) {
+    item.addEventListener('click', (e) => SelectPathfinder(e));
+}
