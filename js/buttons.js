@@ -1,30 +1,30 @@
 function StartVisualizer(rows, cols) {
     if (GetEndPos().length === 0) {
-        //place target node
+        StartError('Failed to run. Place target node to run.');
         return;
     } else if (GetStartPos().length === 0) {
-        //place start node
+        StartError('Failed to run. Place start node to run.');
         return;
     }
     if (running) {
-        //running
+        StartError('Failed to run. Already running.');
         return;
     }
     if (needsReset) {
-        //needs reset
+        StartError('Failed to run. Needs Reset.');
         return;
     }
     if (creatingMaze) {
-        //creating maze
+        StartError('Failed to run. Creating maze.');
         return;
     }
     if(resettingWalls) {
-        //resetting walls
+        StartError('Failed to run. Resetting walls.');
         return;
     }
     switch (selectedPathfinder) {
         case '':
-            //Select path finder
+            StartError('Failed to run. Select pathfinder.');
             break;
         case 'AStar':
             currentPathfinderState = "running";

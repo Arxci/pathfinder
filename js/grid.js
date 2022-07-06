@@ -21,19 +21,19 @@ function MakeGrid(rows, cols) {
 }
 
 function HandleWallPlacement(e) {
-    if (e.shiftKey && (e.target.className === 'grid-item' || e.target.className === 'grid-item wall') && e.buttons) {
+    if (e.shiftKey && (e.target.className === 'grid-item' || e.target.className === 'grid-item wall') && (e.buttons === 1)) {
         if (!running && !needsReset) { //Not running
             if (!creatingMaze) { //Not creaing maze
                 if (!resettingWalls) { //Not resetting walls
                     e.target.classList.toggle('wall');
                 } else {
-                    //Resetting Walls
+                    StartError('Failed to place. Resettings walls.');
                 }
             } else {
-                //Maze being made
+                StartError('Failed to place. Creating maze.');
             }
         } else {
-            //Running
+            StartError('Failed to place. Currently running.');
         }
     }
 }
@@ -56,10 +56,10 @@ function HandleStartNodePlacement(e) {
                 item.classList.toggle('start');
                 e.target.appendChild(item);
             } else {
-                //Maze being made
+                StartError('Failed to place. Creating maze.');
             }
         } else {
-            //Running
+            StartError('Failed to place. Currently running.');
         }
     }
 }
@@ -78,10 +78,10 @@ function HandleTargetNodePlacement(e) {
                 item.classList.toggle('target');
                 e.target.appendChild(item);
             } else {
-                //Creating Maze
+                StartError('Failed to place. Creating maze.');
             }
         } else {
-            //Running
+            StartError('Failed to place. Currently running.');
         }
     }
 }
@@ -154,7 +154,7 @@ function ResetNodes() {
             currentPathfinderState = "null";
         }
     } else {
-        //Running
+        StartError('Failed to reset nodes. Currently running.');
     }
 }
 
@@ -178,10 +178,10 @@ function ResetWalls() {
                 currentPathfinderState = "null";
             }
         } else {
-            //Creating maze
+            StartError('Failed to reset walls. Creating maze.');
         }
     } else {
-        //Running
+        StartError('Failed to reset walls. Currently running.');
     }
 }
 
@@ -238,4 +238,24 @@ function UpdateNeighbors(i, j) {
         }
     }
     $(gridItem).data('neighbors', neighbors);
+}
+
+function StartError(text) {
+    const startError = document.querySelector('.startError');
+    const item = document.createElement('div');
+    const title = document.createElement('p');
+    const errorText = document.createElement('p');
+    title.innerText = "ERROR";
+    errorText.innerText = text;
+    item.appendChild(title);
+    item.appendChild(errorText);
+    item.classList.toggle('startError__item');
+    startError.appendChild(item);
+
+    startError.removeChild(startError.childNodes[0], startError.hasChildNodes());
+
+    if (timeout != null) {
+        window.clearTimeout(timeout);
+    }
+    timeout = setTimeout(() => { startError.removeChild(startError.childNodes[0]); }, 4000);
 }
