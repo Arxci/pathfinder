@@ -25,12 +25,54 @@
             margin-top: 1rem;
         }
 
+        > li:nth-child(1) {
+
+            p:nth-child(2) {
+                top: 0%;
+            }
+        }
+
+        > li:nth-child(2) {
+            
+            p:nth-child(2) {
+                top: -25%;
+            }
+        }
+
+        > li:nth-child(3) {
+            
+            p:nth-child(2) {
+                top: -50%;
+            }
+        }
+
         > li {
             cursor: default;
             padding: 0.325rem 1rem;
+            position: relative;
 
             i {
                 color: $black;
+            }
+
+            > p:nth-child(2) {
+                position: absolute;
+                display: none;
+                width: 22.5rem;
+                height: max-content;
+                text-align: center;
+                padding: .75rem 2rem;
+                border-radius: 5px;
+                left: 105%;
+                background-color: $lightGrey;
+                opacity: .9;
+            }
+
+            &:hover {
+
+                > p:nth-child(2) {
+                    display: inherit;
+                } 
             }
         }
 
